@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Hall_of_Fame.Models;
 using Hall_of_Fame.Models.Context;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json.Schema;
 
 namespace Hall_of_Fame.Services
 {
@@ -39,8 +35,8 @@ namespace Hall_of_Fame.Services
             return person;
         }
 
-        //POST api/v1/person
-        //Создаёт нового сотрудника
+        ///POST api/v1/person
+        ///Создаёт нового сотрудника
         public async Task<ActionResult<Person>> AddPerson(Person person)
         {
             
@@ -51,8 +47,8 @@ namespace Hall_of_Fame.Services
             return person;
         }
 
-        //PUT api/v1/person/[id]
-        //Обновляет данные сотрудника
+        ///PUT api/v1/person/[id]
+        ///Обновляет данные сотрудника
         public async Task<ActionResult<Person>> EditPerson(Person person)
         {
             db.Update(person);
@@ -60,8 +56,8 @@ namespace Hall_of_Fame.Services
             return person;
         }
 
-        //DELETE api/v1/person/[id]
-        //Удаляет с указанным id сотрудника из системы.
+        ///DELETE api/v1/person/[id]
+        ///Удаляет с указанным id сотрудника из системы.
         public async Task<ActionResult<Person>> DeletePerson(long id)
         {
             Person person = db.Persons.Include(item => item.Skills).FirstOrDefault(x => x.Id == id);

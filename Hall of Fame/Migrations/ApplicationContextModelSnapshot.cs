@@ -44,32 +44,14 @@ namespace Hall_of_Fame.Migrations
                         new
                         {
                             Id = 1L,
-                            DisplayName = "T1",
+                            DisplayName = "1",
                             Name = "Test1"
                         },
                         new
                         {
                             Id = 2L,
-                            DisplayName = "T2",
+                            DisplayName = "2",
                             Name = "Test2"
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            DisplayName = "T3",
-                            Name = "Test3"
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            DisplayName = "T4",
-                            Name = "Test4"
-                        },
-                        new
-                        {
-                            Id = 5L,
-                            DisplayName = "T5",
-                            Name = "Test5"
                         });
                 });
 
@@ -101,24 +83,6 @@ namespace Hall_of_Fame.Migrations
                             PersonId = 2L,
                             Name = "Skill2",
                             Level = (byte)2
-                        },
-                        new
-                        {
-                            PersonId = 3L,
-                            Name = "Skill3",
-                            Level = (byte)3
-                        },
-                        new
-                        {
-                            PersonId = 4L,
-                            Name = "Skill4",
-                            Level = (byte)4
-                        },
-                        new
-                        {
-                            PersonId = 5L,
-                            Name = "Skill5",
-                            Level = (byte)5
                         });
                 });
 

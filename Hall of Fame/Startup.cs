@@ -1,12 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Hall_of_Fame.Models.Context;
 using Hall_of_Fame.Services;
 using Microsoft.EntityFrameworkCore;
@@ -23,7 +18,7 @@ namespace Hall_of_Fame
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
-            /// получаем строку подключения из файла конфигурации
+            ///получаем строку подключения из файла конфигурации
             string connection = Configuration.GetConnectionString("DefaultConnection");
             ///устанавливаем контекст данных
             services.AddDbContext<ApplicationContext>(options =>
@@ -39,11 +34,11 @@ namespace Hall_of_Fame
        
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            /// Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
 
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
-            // specifying the Swagger JSON endpoint.
+            /// Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            /// specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Hall of Fame");
@@ -60,7 +55,7 @@ namespace Hall_of_Fame
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers(); // подключаем маршрутизацию на контроллер
+                endpoints.MapControllers(); /// подключаем маршрутизацию на контроллер
             });
         }
     }
