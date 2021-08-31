@@ -14,21 +14,18 @@ namespace Hall_of_Fame.Services
 {
     public class ApplicationService : IApplicationService
     {
+        private readonly ApplicationContext db;
         public ApplicationService(ApplicationContext context)
         {
             db = context;
             if (!db.Persons.Any())
             {
-                db.Persons.Add(new Person { Name = "Tom", Id = 1});
-                db.Persons.Add(new Person { Name = "Alice", Id = 2 });
+                db.Persons.Add(new Person { Name = "Tom"});
+                db.Persons.Add(new Person { Name = "Alice"});
                 db.SaveChanges();
             }
         }
         
-        ApplicationContext db;
-
-        
-
         ///GET api/v1/persons
         ///Возвращает массив объектов типа Person
         public async Task<PersonDTO> Get()
