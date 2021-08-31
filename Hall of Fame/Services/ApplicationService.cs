@@ -40,33 +40,40 @@ namespace Hall_of_Fame.Services
             };
         }
 
-        ////GET api/v1/person/[id]
-        ////Возвращает объект типа Person.
-        //public async Task<PersonDTO> GetId(int id)
-        //{
-        //    Person person = await db.Persons.Include(item => item.Skills).FirstOrDefaultAsync(x => x.Id == id);
-        //    //if (person == null)
-        //    //    return NotFound();
-        //    return new ObjectResult(person);
-        //}
+        ///GET api/v1/person/[id]
+        ///Возвращает объект типа Person.
+        public async Task<PersonDTO> GetId(int id)
+        {
+            Person person = await db.Persons.Include(item => item.Skills).FirstOrDefaultAsync(x => x.Id == id);
 
-        ////POST api/v1/person
-        ////Создаёт нового сотрудника
-        //public async Task<ActionResult<Person>> AddPerson(Person person)
-        //{
-        //    //if (person == null)
-        //    //{
-        //    //    return BadRequest();
-        //    //}
+            return new PersonDTO
+            {
+                Name = person.Name,
+                DisplayName = person.DisplayName,
+                Skills = person.Skills
+            };
+        }
 
-        //    db.Persons.Add(person);
-        //    //_db.Persons.Attach((person));
-        //    //_db.Entry(person).Property(x => x.Name).IsModified = true;
-        //    //_db.Entry(person).Property(x => x.DisplayName).IsModified = true;
-        //    /*await */
-        //    db.SaveChangesAsync();
-        //    //return Ok(person);
-        //}
+        //POST api/v1/person
+        //Создаёт нового сотрудника
+        public async Task<PersonDTO> AddPerson(Person person)
+        {
+            //if (person == null)
+            //{
+            //    return BadRequest();
+            //}
+            db.Persons.Add(person);
+            
+            await db.SaveChangesAsync();
+            return new PersonDTO
+            {
+                Name = person.Name,
+                DisplayName = person.DisplayName,
+                Skills = person.Skills,
+                Id = person.Id
+            };
+            
+        }
 
         ////PUT api/v1/person/[id]
         ////Обновляет данные сотрудника

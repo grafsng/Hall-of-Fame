@@ -9,7 +9,6 @@ namespace Hall_of_Fame.DTO
     public class PersonDTO
     {
         public long Id { get; set; }
-
         public string Name { get; set; }
 
         public string DisplayName { get; set; }

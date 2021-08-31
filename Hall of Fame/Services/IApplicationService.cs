@@ -11,9 +11,9 @@ namespace Hall_of_Fame.Services
     public interface IApplicationService
     {
         Task<PersonDTO> Get();
-        //Task<PersonDTO> GetId(int id);
-        //Task<PersonDTO> AddPerson(Person person);
-        //Task<PersonDTO> EditPerson(Person person, int id);
+        Task<PersonDTO> GetId(int id);
+        Task<PersonDTO> AddPerson(Person person);
+       // Task<PersonDTO> EditPerson(Person person, int id);
 
     }
 }
