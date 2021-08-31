@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Hall_of_Fame.DTO;
 using Hall_of_Fame.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
 
 namespace Hall_of_Fame.Services
 {
     public interface IApplicationService
     {
-        Task<PersonDTO> Get();
-        Task<PersonDTO> GetId(int id);
-        Task<PersonDTO> AddPerson(Person person);
-       // Task<PersonDTO> EditPerson(Person person, int id);
-
+        Task<ActionResult<IEnumerable<Person>>> Get();
+        Task<ActionResult<Person>> GetId(long id);
+        Task<ActionResult<Person>> AddPerson(Person person);
+        Task<ActionResult<Person>> EditPerson(Person person);
+        Task<ActionResult<Person>> DeletePerson(long id);
     }
 }

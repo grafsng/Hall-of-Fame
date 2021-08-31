@@ -15,6 +15,7 @@ namespace Hall_of_Fame.Models
         [Required(ErrorMessage = "Укажите уровень навыка")]
         [Range(1, 10, ErrorMessage = "Уровень навыка может быть в диапазоне от 1 до 10")]
         public byte Level { get; set; } //1-10
-
+        //public long Id { get; set; } //1-10
+        //public long PersonId { get; set; } //1-10
     }
 }
