@@ -31,7 +31,7 @@ namespace Hall_of_Fame
             ///Добавление функциональности контроллера
             services.AddControllers();
             ///Регистрация сервиса
-            services.AddScoped<IService, ApplicationService>();
+            services.AddScoped<IApplicationService, ApplicationService>();
         }
 
        

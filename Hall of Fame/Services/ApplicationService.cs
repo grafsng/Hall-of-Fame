@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Hall_of_Fame.Services
 {
-    public class ApplicationService : IService
+    public class ApplicationService : IApplicationService
     {
         public ApplicationService(ApplicationContext context)
         {

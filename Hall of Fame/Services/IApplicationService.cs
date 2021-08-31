@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Hall_of_Fame.Services
 {
-    public interface IService
+    public interface IApplicationService
     {
         Task<PersonDTO> Get();
         //Task<PersonDTO> GetId(int id);

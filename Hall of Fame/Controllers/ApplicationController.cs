@@ -13,13 +13,18 @@ namespace Hall_of_Fame.Controllers
     [ApiController]
     public class ApplicationController : ControllerBase
     {
-        private readonly ApplicationService _service;
+        private readonly IApplicationService _service;
+
+        public ApplicationController(IApplicationService applicationService)
+        {
+            _service = applicationService;
+        }
 
         [HttpGet]
         public async Task<IActionResult> Get(int id)
         {
             var result = await _service.Get();
-            return result == null ? NotFound() : Ok(result);
+            return Ok(result);
         }
     }
 }
