@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Hall_of_Fame.Models.Context;
+using Hall_of_Fame.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -29,6 +30,8 @@ namespace Hall_of_Fame
                 options.UseSqlServer(connection));
             ///Добавление функциональности контроллера
             services.AddControllers();
+            ///Регистрация сервиса
+            services.AddScoped<IService, ApplicationService>();
         }
 
        
@@ -41,9 +44,10 @@ namespace Hall_of_Fame
 
             app.UseRouting();
 
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers(); // подключаем маршрутизацию на контроллеры
+                endpoints.MapControllers(); // подключаем маршрутизацию на контроллер
             });
         }
     }

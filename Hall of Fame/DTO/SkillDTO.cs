@@ -7,5 +7,8 @@ namespace Hall_of_Fame.DTO
 {
     public class SkillDTO
     {
+        public string Name { get; set; }
+
+        public byte Level { get; set; }
     }
 }

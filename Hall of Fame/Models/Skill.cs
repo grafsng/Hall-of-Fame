@@ -13,5 +13,6 @@ namespace Hall_of_Fame.Models
 
         public long PersonId { get; set; }
 
+        public int Id { get; set; }
     }
 }
