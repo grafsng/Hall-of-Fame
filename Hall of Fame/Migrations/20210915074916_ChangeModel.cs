@@ -2,7 +2,7 @@
 
 namespace Hall_of_Fame.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class ChangeModel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,8 +12,8 @@ namespace Hall_of_Fame.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    DisplayName = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -24,11 +24,11 @@ namespace Hall_of_Fame.Migrations
                 name: "Skills",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Level = table.Column<byte>(type: "tinyint", nullable: false),
-                    PersonId = table.Column<long>(type: "bigint", nullable: false)
+                    PersonId = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -38,7 +38,25 @@ namespace Hall_of_Fame.Migrations
                         column: x => x.PersonId,
                         principalTable: "Persons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Persons",
+                columns: new[] { "Id", "DisplayName", "Name" },
+                values: new object[,]
+                {
+                    { 1L, "1", "Test1" },
+                    { 2L, "2", "Test2" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Skills",
+                columns: new[] { "Id", "Level", "Name", "PersonId" },
+                values: new object[,]
+                {
+                    { 1L, (byte)1, "Skill1", null },
+                    { 2L, (byte)2, "Skill2", null }
                 });
 
             migrationBuilder.CreateIndex(

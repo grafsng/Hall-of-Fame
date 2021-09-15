@@ -4,6 +4,8 @@ namespace Hall_of_Fame.Models
 {
     public class Skill
     {
+        public long Id { get; set; }
+
         [Required(ErrorMessage = "Укажите название навыка")]
         [MaxLength(20, ErrorMessage = "Название навыка не должно превышать 20 символов")]
         public string Name { get; set; }

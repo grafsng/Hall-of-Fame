@@ -57,32 +57,40 @@ namespace Hall_of_Fame.Migrations
 
             modelBuilder.Entity("Hall_of_Fame.Models.Skill", b =>
                 {
-                    b.Property<long?>("PersonId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<byte>("Level")
                         .HasColumnType("tinyint");
 
-                    b.HasKey("PersonId", "Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<long?>("PersonId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PersonId");
 
                     b.ToTable("Skills");
 
                     b.HasData(
                         new
                         {
-                            PersonId = 1L,
-                            Name = "Skill1",
-                            Level = (byte)1
+                            Id = 1L,
+                            Level = (byte)1,
+                            Name = "Skill1"
                         },
                         new
                         {
-                            PersonId = 2L,
-                            Name = "Skill2",
-                            Level = (byte)2
+                            Id = 2L,
+                            Level = (byte)2,
+                            Name = "Skill2"
                         });
                 });
 
@@ -90,9 +98,7 @@ namespace Hall_of_Fame.Migrations
                 {
                     b.HasOne("Hall_of_Fame.Models.Person", null)
                         .WithMany("Skills")
-                        .HasForeignKey("PersonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PersonId");
                 });
 
             modelBuilder.Entity("Hall_of_Fame.Models.Person", b =>

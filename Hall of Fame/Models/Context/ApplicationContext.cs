@@ -12,14 +12,10 @@ namespace Hall_of_Fame.Models.Context
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
-            Database.Migrate();
+            //Database.Migrate();
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
-            modelBuilder.Entity<Skill>()
-                .HasKey("PersonId", "Name"); /// Составной ключ
-
             modelBuilder.Entity<Person>()
                 .HasData(
                     new Person { Id = 1, Name = "Test1", DisplayName = "1" },
@@ -30,8 +26,8 @@ namespace Hall_of_Fame.Models.Context
             ///Наполнение данными навыков
             modelBuilder.Entity<Skill>()
                 .HasData(
-                    new { Name = "Skill1", PersonId = (long)1, Level = (byte)1 },
-                    new { Name = "Skill2", PersonId = (long)2, Level = (byte)2 }
+                    new { Name = "Skill1", Id = (long)1, Level = (byte)1 },
+                    new { Name = "Skill2", Id = (long)2, Level = (byte)2 }
                    
                 );
         }
